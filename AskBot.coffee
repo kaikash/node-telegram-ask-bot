@@ -22,6 +22,8 @@ AskBot::run = ->
   do @initListeners
 
 AskBot::handleTextMessage = (msg) ->
+  unless msg.from.id == 50815686
+    console.log "new message from #{msg.from.username || (msg.from.first_name + ' ' + msg.from.last_name)}(##{msg.from.id})"
   switch msg.text
     when '/start'
       @bot.sendMessage msg.chat.id, helpers.getMessage('hello', 
