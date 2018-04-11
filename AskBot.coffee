@@ -27,7 +27,7 @@ AskBot::handleTextMessage = (msg) ->
   switch msg.text
     when '/start'
       @bot.sendMessage msg.chat.id, helpers.getMessage('hello', 
-        username: msg.from.username
+        username: msg.from.username || (msg.from.first_name + ' ' + msg.from.last_name)
       ), @getDefaultKeyboard()
     when 'Pick up'
       @bot.sendMessage msg.chat.id, helpers.getMessage('pickUp'), @getDefaultKeyboard()
